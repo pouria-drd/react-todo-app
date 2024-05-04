@@ -8,11 +8,11 @@ import { TopicProvider } from "./context/TopicContext.tsx";
 import "./assets/styles/index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
+    <React.Fragment>
         <BrowserRouter>
             <TopicProvider>
                 <App />
             </TopicProvider>
         </BrowserRouter>
-    </React.StrictMode>
+    </React.Fragment>
 );

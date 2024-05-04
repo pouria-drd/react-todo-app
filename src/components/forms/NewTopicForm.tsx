@@ -1,46 +1,18 @@
-import { useId, useState } from "react";
-import { useTopicContext } from "../../context/TopicContext";
-
 import Modal from "../modal/Modal";
 import Input from "../custom-ui/input/Input";
 import Button from "../custom-ui/button/Button";
+import useAddTopicForm from "../../hooks/useAddTopicForm";
 
 interface NewTopicFormProps {
     openTopicForm: boolean;
     onClose: () => void;
 }
 
-const NewTopicForm: React.FC<NewTopicFormProps> = (newTopicFormProps) => {
-    const uniqueID = `topic-${useId()}`;
-    const { addTopic } = useTopicContext(); // Use the addTopic function from context
-
-    const [topicData, setTopicData] = useState<Topic>({
-        id: "", // Initialize with an empty ID
-        name: "",
-        createdAt: new Date(), // Initialize with the current timestamp
-    });
-
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        setTopicData((prevTopicData) => ({
-            ...prevTopicData,
-            name: value,
-        }));
-    };
+const NewTopicForm = (newTopicFormProps: NewTopicFormProps) => {
+    const { topicData, addNewTopic, handleInputChange } = useAddTopicForm();
 
     const handleAddTopic = () => {
-        // Generate a unique ID
-        const newId = uniqueID;
-
-        // Create the new topic object
-        const newTopic = {
-            id: newId,
-            name: topicData.name,
-            createdAt: new Date(),
-        };
-
-        // Add the new topic using the context function
-        addTopic(newTopic);
+        addNewTopic();
 
         // Close the modal
         newTopicFormProps.onClose();
