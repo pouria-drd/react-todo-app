@@ -1,0 +1,22 @@
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
+
+/* ---------------------------------------------------------------------- */
+/* Scroll area */
+
+::-webkit-scrollbar {
+  @apply bg-gray-300 w-1 h-1;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  @apply bg-blue-500 rounded-lg;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  @apply bg-blue-500 rounded-lg;
+}
+
+* {
+  scroll-behavior: smooth;
+}
