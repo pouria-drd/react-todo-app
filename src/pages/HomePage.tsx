@@ -1,27 +1,38 @@
+import { useState } from "react";
+
 import PlusIcon from "../icons/PlusIcon";
+import Modal from "../components/modal/Modal";
+import Button from "../components/button/Button";
 
 function HomePage() {
+  const [openTopicModal, setOpenTopicModal] = useState<boolean>(false);
+
   return (
-    <div
-      className="flex items-center justify-between cursor-default
+    <>
+      <div
+        className="flex items-center justify-between cursor-default
       border-b border-white
       w-full py-6"
-    >
-      <h1 className="text-2xl sm:text-3xl">TOPICS</h1>
-
-      <button
-        className="text-white flex items-center justify-between gap-1
-        text-sm sm:text-base
-        hover:bg-white hover:text-zinc-800
-        rounded px-4 py-2"
       >
-        <span>
-          <PlusIcon />
-        </span>
+        <h1 className="text-2xl sm:text-3xl">TOPICS</h1>
 
-        <p>New Topic</p>
-      </button>
-    </div>
+        <Button onClick={() => setOpenTopicModal(true)}>
+          <span>
+            <PlusIcon />
+          </span>
+
+          <p>New Topic</p>
+        </Button>
+      </div>
+
+      <Modal
+        title="New Topic"
+        isOpen={openTopicModal}
+        onClose={() => {
+          setOpenTopicModal(false);
+        }}
+      />
+    </>
   );
 }
 
