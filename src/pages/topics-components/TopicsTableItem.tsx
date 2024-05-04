@@ -1,7 +1,7 @@
 interface TopicTableItemProps {
     topic: Topic;
 }
-const TopicTableItem = ({ topic }: TopicTableItemProps) => {
+const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
     return (
         <div className="cursor-default flex flex-col gap-2 border border-indigo-500 rounded p-4">
             <h4 className="text-xl sm:text-2xl">{topic.name}</h4>
@@ -30,4 +30,4 @@ const TopicTableItem = ({ topic }: TopicTableItemProps) => {
     );
 };
 
-export default TopicTableItem;
+export default TopicsTableItem;

@@ -1,6 +1,6 @@
 import { useTopicContext } from "../context/TopicContext";
 
-import TopicsTable from "./topic-components/TopicsTable";
+import TopicsTable from "./topics-components/TopicsTable";
 import HomeHeader from "../components/headers/HomeHeader";
 
 function HomePage() {
