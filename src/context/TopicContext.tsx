@@ -2,12 +2,17 @@ import { useState, useEffect, useContext, createContext } from "react";
 
 interface TopicContextProps {
     topics: Topic[];
+    addTask: (newTask: Task) => void;
+    updateTask: (updatedTask: Task) => void;
+
     addTopic: (newTopic: Topic) => void;
 }
 
 // Create the context with an initial empty array as the default value
 const TopicContext = createContext<TopicContextProps>({
     topics: [],
+    addTask: () => {},
+    updateTask: () => {},
     addTopic: () => {},
 });
 
@@ -34,13 +39,48 @@ export const TopicProvider = ({ children }: TopicProviderProps) => {
         setTopics((prevTopics) => [...prevTopics, newTopic]);
     };
 
+    // Add a new task
+    const addTask = (newTask: Task) => {
+        setTopics((prevTopics) => {
+            return prevTopics.map((topic) => {
+                if (topic.id === newTask.topicId) {
+                    return {
+                        ...topic,
+                        tasks: [...(topic.tasks || []), newTask],
+                    };
+                } else {
+                    return topic;
+                }
+            });
+        });
+    };
+
+    // Update a task
+    const updateTask = (updatedTask: Task) => {
+        setTopics((prevTopics) => {
+            return prevTopics.map((topic) => {
+                if (topic.id === updatedTask.topicId) {
+                    return {
+                        ...topic,
+                        tasks: topic.tasks?.map((task) =>
+                            task.id === updatedTask.id ? updatedTask : task
+                        ),
+                    };
+                } else {
+                    return topic;
+                }
+            });
+        });
+    };
+
     // Save topics to local storage whenever they change
     useEffect(() => {
         localStorage.setItem(topicsLabel, JSON.stringify(topics));
     }, [topics]);
 
     return (
-        <TopicContext.Provider value={{ topics, addTopic }}>
+        <TopicContext.Provider
+            value={{ topics, addTask, updateTask, addTopic }}>
             {children}
         </TopicContext.Provider>
     );

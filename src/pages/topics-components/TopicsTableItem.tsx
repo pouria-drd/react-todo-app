@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../router/routes";
 
 import OpenIcon from "../../icons/OpenIcon";
@@ -7,10 +7,12 @@ interface TopicTableItemProps {
     topic: Topic;
 }
 const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
+    const navigate = useNavigate();
+
     return (
-        <Link
-            to={ROUTES.Topic_Detail_Route + topic.id}
-            className="cursor-default flex flex-col gap-2 border border-indigo-500 rounded p-4">
+        <div
+            onClick={() => navigate(ROUTES.Topic_Detail_Route + topic.id)}
+            className="cursor-pointer flex flex-col gap-2 border border-indigo-500 rounded p-4">
             <div className="flex items-center justify-between gap-1">
                 <h4 className="text-xl">{topic.name}</h4>
                 <Link to={ROUTES.Topic_Detail_Route + topic.id}>
@@ -33,12 +35,12 @@ const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
                 <p className="text-gray-400 text-xs">
                     {topic.tasks?.length
                         ? topic.tasks.length < 2
-                            ? "task"
-                            : "tasks"
+                            ? "1 task"
+                            : topic.tasks.length + " tasks"
                         : "No tasks"}
                 </p>
             </div>
-        </Link>
+        </div>
     );
 };
 
