@@ -12,7 +12,7 @@ const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
             to={ROUTES.Topic_Detail_Route + topic.id}
             className="cursor-default flex flex-col gap-2 border border-indigo-500 rounded p-4">
             <div className="flex items-center justify-between gap-1">
-                <h4 className="text-xl sm:text-2xl">{topic.name}</h4>
+                <h4 className="text-xl">{topic.name}</h4>
                 <Link to={ROUTES.Topic_Detail_Route + topic.id}>
                     <OpenIcon />
                 </Link>

@@ -13,7 +13,7 @@ const HomeHeader = () => {
                 className="flex items-center justify-between cursor-default
                 border-b border-white
                 w-full py-6">
-                <h1 className="text-2xl sm:text-3xl">TOPICS</h1>
+                <h1 className="text-xl sm:text-2xl">TOPICS</h1>
 
                 <Button
                     onClick={() => setOpenTopicForm(true)}
@@ -23,7 +23,7 @@ const HomeHeader = () => {
                         <PlusIcon />
                     </span>
 
-                    <p>New Topic</p>
+                    <p className="text-sm">New Topic</p>
                 </Button>
             </div>
 
