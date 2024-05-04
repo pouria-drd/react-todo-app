@@ -29,7 +29,11 @@ const NewTopicForm = (newTopicFormProps: NewTopicFormProps) => {
                     value={topicData.name}
                     onChange={handleInputChange}
                 />
-                <Button onClick={handleAddTopic}>Add Topic</Button>
+                <Button
+                    onClick={handleAddTopic}
+                    disabled={topicData.name.length < 3}>
+                    Add Topic
+                </Button>
             </div>
         </Modal>
     );
