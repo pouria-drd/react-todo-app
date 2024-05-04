@@ -9,6 +9,7 @@ const useAddTopicForm = () => {
         id: "",
         name: "",
         createdAt: new Date(),
+        tasks: [],
     });
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ const useAddTopicForm = () => {
             id: newId,
             name: topicData.name,
             createdAt: new Date(),
+            tasks: [],
         };
 
         addTopic(newTopic);
