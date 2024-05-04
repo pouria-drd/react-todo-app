@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import PlusIcon from "../../icons/PlusIcon";
 import Button from "../custom-ui/button/Button";
 import NewTopicForm from "../forms/NewTopicForm";
@@ -26,10 +27,12 @@ const HomeHeader = () => {
                 </Button>
             </div>
 
-            <NewTopicForm
-                openTopicForm={openTopicForm}
-                onClose={() => setOpenTopicForm(false)}
-            />
+            {openTopicForm && (
+                <NewTopicForm
+                    openTopicForm={openTopicForm}
+                    onClose={() => setOpenTopicForm(false)}
+                />
+            )}
         </>
     );
 };
