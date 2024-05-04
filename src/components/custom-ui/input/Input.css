@@ -1,0 +1,6 @@
+.joyhub-input {
+	@apply bg-zinc-700 transition-all border-transparent
+    outline-none outline-offset-0 focus:outline-indigo-500 focus:outline 
+    focus:placeholder-gray-400 placeholder-gray-400/85 placeholder:text-sm 
+    rounded w-full px-4 py-2;
+}

@@ -1,6 +1,0 @@
-.my-button {
-  @apply text-white flex items-center justify-between gap-1
-    text-sm sm:text-base
-    hover:bg-white hover:text-zinc-800
-    rounded px-4 py-2;
-}
