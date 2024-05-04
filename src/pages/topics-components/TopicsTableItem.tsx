@@ -1,12 +1,24 @@
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../router/routes";
+
+import OpenIcon from "../../icons/OpenIcon";
+
 interface TopicTableItemProps {
     topic: Topic;
 }
 const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
     return (
-        <div className="cursor-default flex flex-col gap-2 border border-indigo-500 rounded p-4">
-            <h4 className="text-xl sm:text-2xl">{topic.name}</h4>
+        <Link
+            to={ROUTES.Topic_Detail_Route + topic.id}
+            className="cursor-default flex flex-col gap-2 border border-indigo-500 rounded p-4">
+            <div className="flex items-center justify-between gap-1">
+                <h4 className="text-xl sm:text-2xl">{topic.name}</h4>
+                <Link to={ROUTES.Topic_Detail_Route + topic.id}>
+                    <OpenIcon />
+                </Link>
+            </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between gap-1">
                 <p className="text-gray-300 text-sm text-left r2l">
                     {new Date(topic.createdAt).toLocaleString("en-US", {
                         year: "numeric",
@@ -26,7 +38,7 @@ const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
                         : "No tasks"}
                 </p>
             </div>
-        </div>
+        </Link>
     );
 };
 
