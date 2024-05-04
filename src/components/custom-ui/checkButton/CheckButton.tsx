@@ -2,11 +2,14 @@ import { useState } from "react";
 import TickIcon from "./icons/TickIcon";
 
 interface CheckButtonProps {
+    defaultValue?: boolean;
     onClick: () => void;
 }
 
 const CheckButton = (checkButtonProps: CheckButtonProps) => {
-    const [checked, setChecked] = useState<boolean>();
+    const [checked, setChecked] = useState<boolean | undefined>(
+        checkButtonProps.defaultValue
+    );
 
     const handleCheckboxChange = () => {
         const newValue = !checked;

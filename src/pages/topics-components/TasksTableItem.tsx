@@ -18,7 +18,10 @@ const TasksTableItem = ({ task }: TasksTableItemProps) => {
                 task.isComplete ? "line-through" : ""
             }`}>
             {task.detail}
-            <CheckButton onClick={handleComplete} />
+            <CheckButton
+                defaultValue={task.isComplete}
+                onClick={handleComplete}
+            />
         </div>
     );
 };
