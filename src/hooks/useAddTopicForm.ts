@@ -3,7 +3,7 @@ import { useTopicContext } from "../context/TopicContext";
 import generateRandomId from "../utils/generateRandomId";
 
 const useAddTopicForm = () => {
-    const { addTopic } = useTopicContext(); // Use the addTopic function from context
+    const { addTopic } = useTopicContext();
 
     const [topicData, setTopicData] = useState<Topic>({
         id: "",
