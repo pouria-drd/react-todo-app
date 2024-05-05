@@ -6,6 +6,8 @@ interface TopicContextProps {
     updateTask: (updatedTask: Task) => void;
 
     addTopic: (newTopic: Topic) => void;
+    deleteTopic: (topicId: string) => void;
+    updateTopic: (updatedTopic: Topic) => void;
 }
 
 // Create the context with an initial empty array as the default value
@@ -13,7 +15,10 @@ const TopicContext = createContext<TopicContextProps>({
     topics: [],
     addTask: () => {},
     updateTask: () => {},
+
     addTopic: () => {},
+    updateTopic: () => {},
+    deleteTopic: () => {},
 });
 
 interface TopicProviderProps {
@@ -37,6 +42,29 @@ export const TopicProvider = ({ children }: TopicProviderProps) => {
     // Add a new topic
     const addTopic = (newTopic: Topic) => {
         setTopics((prevTopics) => [...prevTopics, newTopic]);
+    };
+
+    // Update topic name
+    const updateTopic = (updatedTopic: Topic) => {
+        setTopics((prevTopics) => {
+            return prevTopics.map((topic) => {
+                if (topic.id === updatedTopic.id) {
+                    return {
+                        ...topic,
+                        name: updatedTopic.name,
+                    };
+                } else {
+                    return topic;
+                }
+            });
+        });
+    };
+
+    // Delete a topic
+    const deleteTopic = (topicId: string) => {
+        setTopics((prevTopics) => {
+            return prevTopics.filter((topic) => topic.id !== topicId);
+        });
     };
 
     // Add a new task
@@ -80,7 +108,15 @@ export const TopicProvider = ({ children }: TopicProviderProps) => {
 
     return (
         <TopicContext.Provider
-            value={{ topics, addTask, updateTask, addTopic }}>
+            value={{
+                topics,
+                addTask,
+                updateTask,
+
+                addTopic,
+                updateTopic,
+                deleteTopic,
+            }}>
             {children}
         </TopicContext.Provider>
     );
