@@ -4,6 +4,7 @@ interface TopicContextProps {
     topics: Topic[];
     addTask: (newTask: Task) => void;
     updateTask: (updatedTask: Task) => void;
+    deleteTask: (taskId: string, topicId: string) => void;
 
     addTopic: (newTopic: Topic) => void;
     deleteTopic: (topicId: string) => void;
@@ -15,6 +16,7 @@ const TopicContext = createContext<TopicContextProps>({
     topics: [],
     addTask: () => {},
     updateTask: () => {},
+    deleteTask: () => {},
 
     addTopic: () => {},
     updateTopic: () => {},
@@ -67,6 +69,8 @@ export const TopicProvider = ({ children }: TopicProviderProps) => {
         });
     };
 
+    // ----------------------------------------------------------------------
+
     // Add a new task
     const addTask = (newTask: Task) => {
         setTopics((prevTopics) => {
@@ -101,6 +105,24 @@ export const TopicProvider = ({ children }: TopicProviderProps) => {
         });
     };
 
+    // Delete a task
+    const deleteTask = (taskId: string, topicId: string) => {
+        setTopics((prevTopics) => {
+            return prevTopics.map((topic) => {
+                if (topic.id === topicId) {
+                    return {
+                        ...topic,
+                        tasks: topic.tasks?.filter(
+                            (task) => task.id !== taskId
+                        ),
+                    };
+                } else {
+                    return topic;
+                }
+            });
+        });
+    };
+
     // Save topics to local storage whenever they change
     useEffect(() => {
         localStorage.setItem(topicsLabel, JSON.stringify(topics));
@@ -112,6 +134,7 @@ export const TopicProvider = ({ children }: TopicProviderProps) => {
                 topics,
                 addTask,
                 updateTask,
+                deleteTask,
 
                 addTopic,
                 updateTopic,

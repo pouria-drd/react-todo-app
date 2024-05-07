@@ -24,7 +24,7 @@ const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
             day: "numeric",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit",
+            // second: "2-digit",
             hour12: false,
         });
     };
@@ -50,7 +50,7 @@ const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
 
     return (
         <>
-            <div className="flex flex-col items-start justify-between gap-3 border border-indigo-500 rounded p-4">
+            <div className="flex flex-col items-start justify-between border border-indigo-500 rounded p-4">
                 <h4
                     onClick={() =>
                         navigate(ROUTES.Topic_Detail_Route + topic.id)
@@ -64,11 +64,11 @@ const TopicsTableItem = ({ topic }: TopicTableItemProps) => {
                         onClick={() =>
                             navigate(ROUTES.Topic_Detail_Route + topic.id)
                         }
-                        className="cursor-pointer flex items-center gap-2 w-full">
-                        <p className="text-gray-300 text-sm text-left r2l">
+                        className="cursor-pointer flex items-end gap-2 w-full h-full">
+                        <p className="text-gray-300 text-xs text-nowrap text-left r2l">
                             {handleDate(topic.createdAt)}
                         </p>
-                        <p className="text-gray-400 text-xs">
+                        <p className="text-gray-400 text-[10px] text-nowrap">
                             {taskToText(topic.tasks?.length)}
                         </p>
                     </div>
