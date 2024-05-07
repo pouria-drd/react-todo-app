@@ -27,8 +27,8 @@ const TopicDetailHeader = ({ topic }: TopicDetailHeaderProps) => {
         <>
             <div
                 className="flex items-center justify-between cursor-default
-            border-b border-white
-            w-full py-6">
+                border-b border-white
+                w-full py-6">
                 <h1 className="text-xl sm:text-2xl">{topic.name}</h1>
 
                 <Button

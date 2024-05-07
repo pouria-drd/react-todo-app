@@ -36,7 +36,9 @@ const TasksTableItem = ({ task }: TasksTableItemProps) => {
                 className={`flex items-center justify-between gap-2 border border-indigo-500 rounded p-4 ${
                     task.isComplete ? "line-through" : ""
                 }`}>
-                <p className="text-nowrap overflow-hidden">{task.detail}</p>
+                <p className="cursor-default text-nowrap overflow-hidden">
+                    {task.detail}
+                </p>
 
                 <div className="flex items-center gap-2">
                     <button
