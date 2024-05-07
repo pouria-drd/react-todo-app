@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import TopicDetailHeader from "../components/headers/TopicDetailHeader";
 import { useTopicContext } from "../context/TopicContext";
-import TasksTable from "./topics-components/TasksTable";
+
+import TasksTable from "../components/tasks/TasksTable";
+import TopicDetailHeader from "../components/headers/TopicDetailHeader";
 
 function TopicDetailPage() {
     const { id } = useParams();

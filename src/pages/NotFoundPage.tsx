@@ -1,5 +1,9 @@
 function NotFoundPage() {
-    return <div>NotFoundPage</div>;
+    return (
+        <div className="flex items-center justify-center w-full h-full">
+            NotFoundPage
+        </div>
+    );
 }
 
 export default NotFoundPage;

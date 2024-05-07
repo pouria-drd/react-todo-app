@@ -1,5 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
 import { ROUTES } from "../../router/routes";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
